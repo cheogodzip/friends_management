@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import java.time.LocalDate;
 
 @Entity
@@ -36,4 +37,8 @@ public class Person {
 
     @ToString.Exclude
     private String phoneNumber;
+
+    @OneToOne
+    private Block block;
+
 }
