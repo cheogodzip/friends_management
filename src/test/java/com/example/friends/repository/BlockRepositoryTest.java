@@ -1,7 +1,6 @@
 package com.example.friends.repository;
 
 import com.example.friends.domain.Block;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,7 +9,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class BlockRepositoryTest {
@@ -30,8 +28,9 @@ class BlockRepositoryTest {
 
         List<Block> blockList = blockRepository.findAll();
 
-        assertThat(blockList.size()).isEqualTo(1);
-        assertThat(blockList.get(0).getName()).isEqualTo("martin");
+        assertThat(blockList.size()).isEqualTo(3);
+        assertThat(blockList.get(0).getName()).isEqualTo("dennis");
+        assertThat(blockList.get(1).getName()).isEqualTo("sophia");
+        assertThat(blockList.get(2).getName()).isEqualTo("martin");
     }
-
 }
