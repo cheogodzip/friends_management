@@ -1,6 +1,5 @@
-package com.example.friends.dto;
+package com.example.friends.domain.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
