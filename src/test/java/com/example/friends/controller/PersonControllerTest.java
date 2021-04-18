@@ -70,7 +70,7 @@ class PersonControllerTest {
     @Test
     void modifyName() throws Exception {
         mockMvc.perform(
-                MockMvcRequestBuilders.patch("/api/person/1")
+                MockMvcRequestBuilders.patch("/api/person/2")
                         .param("name", "martin22"))
                 .andDo(print())
                 .andExpect(status().isOk());
