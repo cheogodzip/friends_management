@@ -38,6 +38,12 @@ public class PersonController {
         log.info("person -> {} ", personRepository.findAll());
     }
 
+    @DeleteMapping("/{id}")
+    public void deletePerson(@PathVariable Long id){
+        personService.delete(id);
+        log.info("person -> {} ", personRepository.findAll());
+    }
+
     @PatchMapping("/{id}")
     public void modifyPerson(@PathVariable Long id, String name){
         personService.modify(id, name);
