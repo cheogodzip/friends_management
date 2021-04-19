@@ -49,21 +49,21 @@ class PersonServiceTest {
     }
 
     private void givenPeople() {
-        givenPerson("martin", 10, "A");
-        givenPerson("david", 9, "B");
-        givenBlockPerson("dennis", 7, "O");
-        givenBlockPerson("martin", 11, "AB");
+        givenPerson("martin", "A");
+        givenPerson("david", "B");
+        givenBlockPerson("dennis", "O");
+        givenBlockPerson("martin",  "AB");
 
     }
 
-    private void givenBlockPerson(String name, int age, String bloodType){
-        Person blockPerson = new Person(name, age, bloodType);
+    private void givenBlockPerson(String name, String bloodType){
+        Person blockPerson = new Person(name, bloodType);
         blockPerson.setBlock(new Block(name));
 
         personRepository.save(blockPerson);
     }
 
-    private void givenPerson(String name, int age, String bloodType) {
-        personRepository.save(new Person(name, age, bloodType));
+    private void givenPerson(String name,  String bloodType) {
+        personRepository.save(new Person(name, bloodType));
     }
 }
