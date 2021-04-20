@@ -1,8 +1,6 @@
 package com.example.friends.service;
 
-import com.example.friends.domain.Block;
 import com.example.friends.domain.Person;
-import com.example.friends.repository.BlockRepository;
 import com.example.friends.repository.PersonRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,18 +17,6 @@ class PersonServiceTest {
     private PersonService personService;
     @Autowired
     private PersonRepository personRepository;
-    @Autowired
-    private BlockRepository blockRepository;
-
-    @Test
-    void getPeopleExcludeBlocks() {
-        List<Person> result = personService.getPeopleExcludeBlocks();
-
-        assertThat(result.size()).isEqualTo(3);
-        assertThat(result.get(0).getName()).isEqualTo("martin");
-        assertThat(result.get(1).getName()).isEqualTo("david");
-        assertThat(result.get(2).getName()).isEqualTo("benny");
-    }
 
     @Test
     void getPeopleByName(){
@@ -49,21 +35,14 @@ class PersonServiceTest {
     }
 
     private void givenPeople() {
-        givenPerson("martin", "A");
-        givenPerson("david", "B");
-        givenBlockPerson("dennis", "O");
-        givenBlockPerson("martin",  "AB");
+        givenPerson("martin");
+        givenPerson("david");
+        givenPerson("dennis");
+        givenPerson("martin");
 
     }
 
-    private void givenBlockPerson(String name, String bloodType){
-        Person blockPerson = new Person(name, bloodType);
-        blockPerson.setBlock(new Block(name));
-
-        personRepository.save(blockPerson);
-    }
-
-    private void givenPerson(String name,  String bloodType) {
-        personRepository.save(new Person(name, bloodType));
+    private void givenPerson(String name) {
+        personRepository.save(new Person(name));
     }
 }
