@@ -75,7 +75,17 @@ class PersonServiceTest {
 
         Person person = personService.getPerson(1L);
         assertThat(person).isNull();
+    }
 
+    // assignment
+    @Test
+    void getBirthdayFriends(){
+        when(personRepository.findByBirthday(LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth()))
+                .thenReturn(Lists.newArrayList(new Person("martin")));
+
+        List<Person> people = personService.getBirthdayFriends();
+        assertThat(people.size()).isEqualTo(1);
+        assertThat(people.get(0).getName()).isEqualTo("martin");
     }
 
     @Test

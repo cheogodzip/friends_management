@@ -23,7 +23,6 @@ import org.springframework.web.context.WebApplicationContext;
 import java.awt.*;
 import java.time.LocalDate;
 
-import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -78,6 +77,13 @@ class PersonControllerTest {
                 .andExpect(jsonPath("$.deleted").value(false))
                 .andExpect(jsonPath("$.age").isNumber())
                 .andExpect(jsonPath("$.birthdayToday").isBoolean());
+    }
+
+    @Test
+    void getBirthdayFriends() throws Exception{
+        mockMvc.perform(
+                MockMvcRequestBuilders.get("/api/person/birthday-friends"))
+                .andExpect(status().isOk());
     }
 
     @Test

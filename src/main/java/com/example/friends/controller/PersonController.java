@@ -37,6 +37,12 @@ public class PersonController {
         return personService.getPerson(id);
     }
 
+    // assignment
+    @GetMapping("/birthday-friends")
+    public List<Person> getBirthdayFriends(){
+        return personService.getBirthdayFriends();
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void postPerson(@RequestBody @Valid PersonDto personDto){

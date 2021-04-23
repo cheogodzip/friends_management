@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -32,6 +33,16 @@ public class PersonService {
     @Transactional(readOnly = true)
     public Person getPerson(Long id){
         return personRepository.findById(id).orElse(null);
+    }
+
+    // assignment
+    public List<Person> getBirthdayFriends() {
+        List<Person> today = personRepository.findByBirthday(LocalDate.now().getMonthValue(), LocalDate.now().getDayOfMonth());
+        List<Person> tommorrow = personRepository.findByBirthday(LocalDate.now().plusDays(1).getMonthValue(), LocalDate.now().plusDays(1).getDayOfMonth());
+
+        today.addAll(tommorrow);
+
+        return today;
     }
 
     @Transactional
