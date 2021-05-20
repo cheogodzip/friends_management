@@ -91,7 +91,7 @@ class PersonControllerTest {
         PersonDto dto = PersonDto.of("martin", "programming", "판교", LocalDate.now(), "programmer", "010-1111-2222");
         mockMvc.perform(
                 MockMvcRequestBuilders.post("/api/person")
-                    .contentType(MediaType.APPLICATION_JSON_UTF8)
+                    .contentType(MediaType.APPLICATION_JSON)
                     .content(toJsonString(dto)))
                 .andExpect(status().isCreated());
 
@@ -170,9 +170,6 @@ class PersonControllerTest {
                 () -> org.assertj.core.api.Assertions.assertThat(result.getJob()).isEqualTo("programmer"),
                 () -> org.assertj.core.api.Assertions.assertThat(result.getPhoneNumber()).isEqualTo("010-1231-1231")
         );
-
-
-
     }
 
     @Test

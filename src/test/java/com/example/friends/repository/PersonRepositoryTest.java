@@ -3,6 +3,7 @@ package com.example.friends.repository;
 import com.example.friends.domain.Person;
 import com.example.friends.domain.dto.Birthday;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
